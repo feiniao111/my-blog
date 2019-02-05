@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>如何生成完整的diff文件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我们知道，一般执行svn diff命令，只会列出发生文件变更的行及前后几行，不会完整的显示出所有的代码。123456789101112$ svn diff README.mdIndex: README.md===================================================================--- README.md   (revision 2608">
+<meta name="keywords" content="code-review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何生成完整的diff文件">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/code review/如何生成完整的diff文件/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我们知道，一般执行svn diff命令，只会列出发生文件变更的行及前后几行，不会完整的显示出所有的代码。123456789101112$ svn diff README.mdIndex: README.md===================================================================--- README.md   (revision 2608">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T09:05:04.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何生成完整的diff文件">
+<meta name="twitter:description" content="我们知道，一般执行svn diff命令，只会列出发生文件变更的行及前后几行，不会完整的显示出所有的代码。123456789101112$ svn diff README.mdIndex: README.md===================================================================--- README.md   (revision 2608">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-code review/如何生成完整的diff文件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/code review/如何生成完整的diff文件/" class="article-date">
+  <time datetime="2019-02-04T06:38:08.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何生成完整的diff文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道，一般执行<code>svn diff</code>命令，只会列出发生文件变更的行及前后几行，不会完整的显示出所有的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ svn diff README.md</span><br><span class="line">Index: README.md</span><br><span class="line">===================================================================</span><br><span class="line">--- README.md   (revision 2608)</span><br><span class="line">+++ README.md   (working copy)</span><br><span class="line">@@ -1,6 +1,7 @@</span><br><span class="line"> # frontend</span><br><span class="line"></span><br><span class="line"> &gt; A Vue.js project</span><br><span class="line">+测试diff</span><br><span class="line"></span><br><span class="line"> ## Build Setup</span><br></pre></td></tr></table></figure></p>
+<p>因此通过<code>arc diff</code>命令，上传到phabricator网页的代码，也是非完整的。这在审查代码时有时（例如仅一行代码发生变更）无法获取上下文语境。<br>为了查看完整的diff文件，可以采用Gnu diff工具。</p>
+<h2 id="安装Gnu-diff"><a href="#安装Gnu-diff" class="headerlink" title="安装Gnu diff"></a>安装Gnu diff</h2><p>下载网页：<a href="http://gnuwin32.sourceforge.net/packages/diffutils.htm，">http://gnuwin32.sourceforge.net/packages/diffutils.htm，</a><br>点击下载Complete package，然后安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Description		Download		Size		Last change		Md5sum</span><br><span class="line">• Complete package, except sources	 	Setup	 	2145352	 	24 May 2004	 	d39323cc46969ccbbab26321e238953e</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，在磁盘上创建一个批处理文件——<code>mydiff.bat</code>，输入以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">F:\GnuWin32\bin\diff.exe  -U9999999 -L %3 -L %5 %6 %7</span><br></pre></td></tr></table></figure></p>
+<p>这里<code>F:\GnuWin32\bin\diff.exe</code>是该文件的路径，替换成你自己的。</p>
+<h2 id="修改svn配置"><a href="#修改svn配置" class="headerlink" title="修改svn配置"></a>修改svn配置</h2><p>这里以Tortotise SVN客户端为例，右键-&gt;settings-&gt;General, 点击Edit按钮，打开Subversion configuration file, 找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># diff-cmd = diff_program (diff, gdiff, etc.)</span><br></pre></td></tr></table></figure></p>
+<p>这行，后面添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff-cmd = F:\GnuWin32\mydiff.bat</span><br></pre></td></tr></table></figure></p>
+<p>保存文件。<br>现在执行<code>svn diff</code>就可以得到获取完整的文件了，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ svn diff README.md</span><br><span class="line">Index: README.md</span><br><span class="line">===================================================================</span><br><span class="line">--- README.md   (revision 2608)</span><br><span class="line">+++ README.md   (working copy)</span><br><span class="line">@@ -1,21 +1,22 @@</span><br><span class="line"> # frontend</span><br><span class="line"></span><br><span class="line"> &gt; A Vue.js project</span><br><span class="line">+测试diff</span><br><span class="line"></span><br><span class="line"> ## Build Setup</span><br><span class="line"></span><br><span class="line"> ``` bash</span><br><span class="line"> # install dependencies</span><br><span class="line"> npm install</span><br><span class="line"></span><br><span class="line"> # serve with hot reload at localhost:8080</span><br><span class="line"> npm run dev</span><br><span class="line"></span><br><span class="line"> # build for production with minification</span><br><span class="line"> npm run build</span><br><span class="line"></span><br><span class="line"> # build for production and view the bundle analyzer report</span><br><span class="line"> npm run build --report</span><br><span class="line"></span><br><span class="line"> For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/code review/如何生成完整的diff文件/" data-id="cjrqhxqpy0004pwqxohn3a1r8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code-review/">code-review</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/docker/Poseidon主页部署/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Poseidon主页部署(docker)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/04/code review/phabricator平台简明使用教程-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Phabricator平台简明使用教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

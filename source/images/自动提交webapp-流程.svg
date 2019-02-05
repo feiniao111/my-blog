@@ -1,0 +1,360 @@
+<svg id="mermaid-1549207271447" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 376.75px;font-size:14px" viewBox="0 0 376.75 1506.3999938964844"><style>
+
+
+#mermaid-1549207271447 .label {
+  font-family: 'trebuchet ms', verdana, arial;
+  color: #333; }
+
+#mermaid-1549207271447 .node rect,
+#mermaid-1549207271447 .node circle,
+#mermaid-1549207271447 .node ellipse,
+#mermaid-1549207271447 .node polygon {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1px; }
+
+#mermaid-1549207271447 .node.clickable {
+  cursor: pointer; }
+
+#mermaid-1549207271447 .arrowheadPath {
+  fill: #333333; }
+
+#mermaid-1549207271447 .edgePath .path {
+  stroke: #333333;
+  stroke-width: 1.5px; }
+
+#mermaid-1549207271447 .edgeLabel {
+  background-color: #e8e8e8; }
+
+#mermaid-1549207271447 .cluster rect {
+  fill: #ffffde !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important; }
+
+#mermaid-1549207271447 .cluster text {
+  fill: #333; }
+
+#mermaid-1549207271447 div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100; }
+
+#mermaid-1549207271447 .actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF; }
+
+#mermaid-1549207271447 text.actor {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549207271447 .actor-line {
+  stroke: grey; }
+
+#mermaid-1549207271447 .messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: '2 2';
+  stroke: #333; }
+
+#mermaid-1549207271447 .messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: '2 2';
+  stroke: #333; }
+
+#mermaid-1549207271447 #arrowhead {
+  fill: #333; }
+
+#mermaid-1549207271447 #crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important; }
+
+#mermaid-1549207271447 .messageText {
+  fill: #333;
+  stroke: none; }
+
+#mermaid-1549207271447 .labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF; }
+
+#mermaid-1549207271447 .labelText {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549207271447 .loopText {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549207271447 .loopLine {
+  stroke-width: 2;
+  stroke-dasharray: '2 2';
+  stroke: #CCCCFF; }
+
+#mermaid-1549207271447 .note {
+  stroke: #aaaa33;
+  fill: #fff5ad; }
+
+#mermaid-1549207271447 .noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px; }
+
+#mermaid-1549207271447 .activation0 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+#mermaid-1549207271447 .activation1 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+#mermaid-1549207271447 .activation2 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+
+#mermaid-1549207271447 .section {
+  stroke: none;
+  opacity: 0.2; }
+
+#mermaid-1549207271447 .section0 {
+  fill: rgba(102, 102, 255, 0.49); }
+
+#mermaid-1549207271447 .section2 {
+  fill: #fff400; }
+
+#mermaid-1549207271447 .section1,
+#mermaid-1549207271447 .section3 {
+  fill: white;
+  opacity: 0.2; }
+
+#mermaid-1549207271447 .sectionTitle0 {
+  fill: #333; }
+
+#mermaid-1549207271447 .sectionTitle1 {
+  fill: #333; }
+
+#mermaid-1549207271447 .sectionTitle2 {
+  fill: #333; }
+
+#mermaid-1549207271447 .sectionTitle3 {
+  fill: #333; }
+
+#mermaid-1549207271447 .sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px; }
+
+
+#mermaid-1549207271447 .grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges; }
+
+#mermaid-1549207271447 .grid path {
+  stroke-width: 0; }
+
+
+#mermaid-1549207271447 .today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px; }
+
+
+
+#mermaid-1549207271447 .task {
+  stroke-width: 2; }
+
+#mermaid-1549207271447 .taskText {
+  text-anchor: middle;
+  font-size: 11px; }
+
+#mermaid-1549207271447 .taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px; }
+
+#mermaid-1549207271447 .taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px; }
+
+
+#mermaid-1549207271447 .taskText0,
+#mermaid-1549207271447 .taskText1,
+#mermaid-1549207271447 .taskText2,
+#mermaid-1549207271447 .taskText3 {
+  fill: white; }
+
+#mermaid-1549207271447 .task0,
+#mermaid-1549207271447 .task1,
+#mermaid-1549207271447 .task2,
+#mermaid-1549207271447 .task3 {
+  fill: #8a90dd;
+  stroke: #534fbc; }
+
+#mermaid-1549207271447 .taskTextOutside0,
+#mermaid-1549207271447 .taskTextOutside2 {
+  fill: black; }
+
+#mermaid-1549207271447 .taskTextOutside1,
+#mermaid-1549207271447 .taskTextOutside3 {
+  fill: black; }
+
+
+#mermaid-1549207271447 .active0,
+#mermaid-1549207271447 .active1,
+#mermaid-1549207271447 .active2,
+#mermaid-1549207271447 .active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc; }
+
+#mermaid-1549207271447 .activeText0,
+#mermaid-1549207271447 .activeText1,
+#mermaid-1549207271447 .activeText2,
+#mermaid-1549207271447 .activeText3 {
+  fill: black !important; }
+
+
+#mermaid-1549207271447 .done0,
+#mermaid-1549207271447 .done1,
+#mermaid-1549207271447 .done2,
+#mermaid-1549207271447 .done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2; }
+
+#mermaid-1549207271447 .doneText0,
+#mermaid-1549207271447 .doneText1,
+#mermaid-1549207271447 .doneText2,
+#mermaid-1549207271447 .doneText3 {
+  fill: black !important; }
+
+
+#mermaid-1549207271447 .crit0,
+#mermaid-1549207271447 .crit1,
+#mermaid-1549207271447 .crit2,
+#mermaid-1549207271447 .crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2; }
+
+#mermaid-1549207271447 .activeCrit0,
+#mermaid-1549207271447 .activeCrit1,
+#mermaid-1549207271447 .activeCrit2,
+#mermaid-1549207271447 .activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2; }
+
+#mermaid-1549207271447 .doneCrit0,
+#mermaid-1549207271447 .doneCrit1,
+#mermaid-1549207271447 .doneCrit2,
+#mermaid-1549207271447 .doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges; }
+
+#mermaid-1549207271447 .doneCritText0,
+#mermaid-1549207271447 .doneCritText1,
+#mermaid-1549207271447 .doneCritText2,
+#mermaid-1549207271447 .doneCritText3 {
+  fill: black !important; }
+
+#mermaid-1549207271447 .activeCritText0,
+#mermaid-1549207271447 .activeCritText1,
+#mermaid-1549207271447 .activeCritText2,
+#mermaid-1549207271447 .activeCritText3 {
+  fill: black !important; }
+
+#mermaid-1549207271447 .titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black; }
+
+#mermaid-1549207271447 g.classGroup text {
+  fill: #9370DB;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 10px; }
+
+#mermaid-1549207271447 g.classGroup rect {
+  fill: #ECECFF;
+  stroke: #9370DB; }
+
+#mermaid-1549207271447 g.classGroup line {
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 .classLabel .box {
+  stroke: none;
+  stroke-width: 0;
+  fill: #ECECFF;
+  opacity: 0.5; }
+
+#mermaid-1549207271447 .classLabel .label {
+  fill: #9370DB;
+  font-size: 10px; }
+
+#mermaid-1549207271447 .relation {
+  stroke: #9370DB;
+  stroke-width: 1;
+  fill: none; }
+
+#mermaid-1549207271447 #compositionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #compositionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #aggregationStart {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #aggregationEnd {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #dependencyStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #dependencyEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #extensionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 #extensionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549207271447 .commit-id,
+#mermaid-1549207271447 .commit-msg,
+#mermaid-1549207271447 .branch-label {
+  fill: lightgrey;
+  color: lightgrey; }
+</style><style>#mermaid-1549207271447 {
+    color: rgba(0, 0, 0, 0.65);
+    font: ;
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M166.25,61L166.25,86L166.75,111.50000152587899" marker-end="url(#arrowhead437)" style="fill:none"></path><defs><marker id="arrowhead437" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M136.13545714509206,268.0854556192132L103.5,333.6999969482422L103.5,369.1999969482422" marker-end="url(#arrowhead438)" style="fill:none"></path><defs><marker id="arrowhead438" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M103.5,410.1999969482422L103.5,435.1999969482422L137.97802197802199,460.1999969482422" marker-end="url(#arrowhead439)" style="fill:none"></path><defs><marker id="arrowhead439" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M197.36454385307218,268.08545767280685L229,333.6999969482422L229,389.6999969482422L229,435.1999969482422L194.52197802197801,460.1999969482422" marker-end="url(#arrowhead440)" style="fill:none"></path><defs><marker id="arrowhead440" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M166.25,501.1999969482422L166.25,526.1999969482422L166.75,551.699998474121" marker-end="url(#arrowhead441)" style="fill:none"></path><defs><marker id="arrowhead441" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M201.1449058371597,704.5050926369612L241.25,773.8999938964844L241.25,809.3999938964844" marker-end="url(#arrowhead442)" style="fill:none"></path><defs><marker id="arrowhead442" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M132.3550952842604,704.5050907066235L91.25,773.8999938964844L91.25,829.8999938964844L91.25,875.3999938964844L127.04411764705883,940.6058762494256" marker-end="url(#arrowhead443)" style="fill:none"></path><defs><marker id="arrowhead443" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M241.25,850.3999938964844L241.25,875.3999938964844L206.4558823529412,940.6058762494256" marker-end="url(#arrowhead444)" style="fill:none"></path><defs><marker id="arrowhead444" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M207.94379014989295,1084.7062037465914L251.75,1160.8999938964844L251.75,1196.3999938964844" marker-end="url(#arrowhead445)" style="fill:none"></path><defs><marker id="arrowhead445" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M125.55620985010707,1084.7062037465914L80.75,1160.8999938964844L80.75,1216.8999938964844L80.75,1262.3999938964844L127.72802197802199,1287.3999938964844" marker-end="url(#arrowhead446)" style="fill:none"></path><defs><marker id="arrowhead446" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M251.75,1237.3999938964844L251.75,1262.3999938964844L204.77197802197801,1287.3999938964844" marker-end="url(#arrowhead447)" style="fill:none"></path><defs><marker id="arrowhead447" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M166.25,1328.3999938964844L166.25,1353.3999938964844L166.25,1378.3999938964844" marker-end="url(#arrowhead448)" style="fill:none"></path><defs><marker id="arrowhead448" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M166.25,1419.3999938964844L166.25,1444.3999938964844L166.25,1469.3999938964844" marker-end="url(#arrowhead449)" style="fill:none"></path><defs><marker id="arrowhead449" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(103.5,333.6999969482422)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">是</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(229,389.6999969482422)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">否</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(241.25,773.8999938964844)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">否</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(91.25,829.8999938964844)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">是</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(251.75,1160.8999938964844)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">是</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(80.75,1216.8999938964844)" style="opacity: 1;"><g transform="translate(-7,-10.5)" class="label"><foreignObject width="14" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">否</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(166.25,40.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-24" y="-20.5" width="48" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-14,-10.5)"><foreignObject width="28" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">开始</div></foreignObject></g></g></g><g class="node" id="B" transform="translate(166.25,204.5999984741211)" style="opacity: 1;"><polygon points="93.60000000000001,0 187.20000000000002,-93.60000000000001 93.60000000000001,-187.20000000000002 0,-93.60000000000001" rx="5" ry="5" transform="translate(-93.60000000000001,93.60000000000001)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-73.5,-10.5)"><foreignObject width="147" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">判断是否有webapp目录</div></foreignObject></g></g></g><g class="node" id="C" transform="translate(103.5,389.6999969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-83.5" y="-20.5" width="167" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-73.5,-10.5)"><foreignObject width="147" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">备份webapp目录并删除</div></foreignObject></g></g></g><g class="node" id="D" transform="translate(166.25,480.6999969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-69.5" y="-20.5" width="139" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-59.5,-10.5)"><foreignObject width="119" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">从svn同步最新代码</div></foreignObject></g></g></g><g class="node" id="E" transform="translate(166.25,644.7999954223633)" style="opacity: 1;"><polygon points="93.60000000000001,0 187.20000000000002,-93.60000000000001 93.60000000000001,-187.20000000000002 0,-93.60000000000001" rx="5" ry="5" transform="translate(-93.60000000000001,93.60000000000001)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-73.5,-10.5)"><foreignObject width="147" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">判断是否有webapp目录</div></foreignObject></g></g></g><g class="node" id="F" transform="translate(241.25,829.8999938964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-108" y="-20.5" width="216" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-98,-10.5)"><foreignObject width="196" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">创建webapp目录，并托管到svn</div></foreignObject></g></g></g><g class="node" id="G" transform="translate(166.25,1012.8999938964844)" style="opacity: 1;"><polygon points="112.5,0 225,-112.5 112.5,-225 0,-112.5" rx="5" ry="5" transform="translate(-112.5,112.5)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-94.5,-10.5)"><foreignObject width="189" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">判断webapp目录下是否有文件</div></foreignObject></g></g></g><g class="node" id="H" transform="translate(251.75,1216.8999938964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-129" y="-20.5" width="258" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-119,-10.5)"><foreignObject width="238" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">将webapp目录下的文件，从svn中删除</div></foreignObject></g></g></g><g class="node" id="I" transform="translate(166.25,1307.8999938964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-52" y="-20.5" width="104" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-42,-10.5)"><foreignObject width="84" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">执行压缩编译</div></foreignObject></g></g></g><g class="node" id="J" transform="translate(166.25,1398.8999938964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-101" y="-20.5" width="202" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-91,-10.5)"><foreignObject width="182" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">将webapp下的文件提交到svn</div></foreignObject></g></g></g><g class="node" id="K" transform="translate(166.25,1489.8999938964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-24" y="-20.5" width="48" height="41"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-14,-10.5)"><foreignObject width="28" height="21"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">结束</div></foreignObject></g></g></g></g></g></g></svg>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Phabricator平台简明使用教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景目前组里的codereview没有专门工具支持，评委仅仅通过svn客户端的show log命令，查看提交代码的diff内容，然后将评审意见以word的方式保存，再通过邮件或bqq的方式发送给被评审人。这种评审方式不够简洁和有效率，并存在以下不足：  代码必须事先提交到svn。这种先提交再评审的方式，有问题的代码，也会先进入代码仓库，等到评审意见出来并修改后，才被修复。从代码质量管控上来看，这种">
+<meta name="keywords" content="code-review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Phabricator平台简明使用教程">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/code review/phabricator平台简明使用教程-md/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景目前组里的codereview没有专门工具支持，评委仅仅通过svn客户端的show log命令，查看提交代码的diff内容，然后将评审意见以word的方式保存，再通过邮件或bqq的方式发送给被评审人。这种评审方式不够简洁和有效率，并存在以下不足：  代码必须事先提交到svn。这种先提交再评审的方式，有问题的代码，也会先进入代码仓库，等到评审意见出来并修改后，才被修复。从代码质量管控上来看，这种">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T09:04:53.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Phabricator平台简明使用教程">
+<meta name="twitter:description" content="背景目前组里的codereview没有专门工具支持，评委仅仅通过svn客户端的show log命令，查看提交代码的diff内容，然后将评审意见以word的方式保存，再通过邮件或bqq的方式发送给被评审人。这种评审方式不够简洁和有效率，并存在以下不足：  代码必须事先提交到svn。这种先提交再评审的方式，有问题的代码，也会先进入代码仓库，等到评审意见出来并修改后，才被修复。从代码质量管控上来看，这种">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-code review/phabricator平台简明使用教程-md" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/code review/phabricator平台简明使用教程-md/" class="article-date">
+  <time datetime="2019-02-04T05:42:31.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Phabricator平台简明使用教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>目前组里的codereview没有专门工具支持，评委仅仅通过svn客户端的show log命令，查看提交代码的diff内容，然后将评审意见以word的方式保存，再通过邮件或bqq的方式发送给被评审人。这种评审方式不够简洁和有效率，并存在以下不足：</p>
+<ol>
+<li>代码必须事先提交到svn。这种先提交再评审的方式，有问题的代码，也会先进入代码仓库，等到评审意见出来并修改后，才被修复。从代码质量管控上来看，这种先提交再评审流程并不好；</li>
+<li>以word方式保存评审意见，不够直观。评审人需要截图或至少告知是哪个文件的哪一行有问题，如果代码问题较多，评审人就会花上一些时间在截图、标明代码位置上。另外，word的排版没有统一模板，每个评审人的评审word内容风格不一，被评审人查看评审意见时，可能还需要花些时间读懂评审意见的轮廓；</li>
+<li>如果一份代码有多个评委，因为评审意见以word保存，他们相互之间不能方便的看到其他人的评审意见。可能会出现问题代码重复评审，浪费时间；</li>
+<li>评审意见容易丢失。以word方式保存，容易丢失，从长远来看，大量的代码评审数据缺失（评审次数、评审代码量、哪些评审意见具有高质量等）</li>
+</ol>
+<p><a href="http://note.youdao.com/noteshare?id=7672ee151c28eef700c7d8359360ff5d&sub=3A9FDD7B7B04429D9740375122FE2DD6" target="_blank">有道笔记</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/code review/phabricator平台简明使用教程-md/" data-id="cjrqhxqpl0001pwqx4ecscm10" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code-review/">code-review</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/code review/如何生成完整的diff文件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          如何生成完整的diff文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/04/vue/vue框架下的国际化-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue框架下的国际化.md</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

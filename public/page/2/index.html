@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-docker/自动提交webapp-md" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/02/docker/自动提交webapp-md/" class="article-date">
+  <time datetime="2019-02-02T14:20:06.000Z" itemprop="datePublished">2019-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/02/docker/自动提交webapp-md/">自动提交webapp.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景——————多人提交编译代码容易引发冲突"><a href="#背景——————多人提交编译代码容易引发冲突" class="headerlink" title="背景——————多人提交编译代码容易引发冲突"></a>背景——————多人提交编译代码容易引发冲突</h2><p>现有很多项目采用vue+webpack构建，执行<code>npm run build</code>生成编译代码(通常是webapp)，该代码是压缩后的，如果是不同的开发人员提交，很容易出现代码冲突,此时需要本地下载最新代码，并将其从svn库删除，然后重新提交新代码：</p>
+<p>1.开发小A执行<code>npm run build</code>生成webapp(版本1), 并提交到svn<br>2.开发小B也执行<code>npm run build</code>生成webapp(版本2), 并提交到svn, 被系统告知需要update<br>3.小B清空webapp, 执行update更新, 得到webapp(版本1), 然后将webapp中的内容标记为delete, 然后执行<code>svn ci</code>从库中删除]<br>4.小B重新执行<code>npm run build</code>生成webapp(版本3), 然后add并提交到svn</p>
+<p>以上是理想的多人提交编译代码步骤，但如果疏忽操作不当，非常容易引发代码冲突，由于代码是压缩过的，难以修改！也许你会说，为啥不专门一个人负责编辑和提交webapp呢？事实是可以的，但也存在需要多人提交的情形（比如专门负责提交webapp到svn的哥们下班了，但此时又需要修改代码=！=）<br>针对以上情形，可以编写一个自助提交webapp的脚本，将上述步骤交由机器执行，简单不易错~</p>
+<h2 id="提交流程"><a href="#提交流程" class="headerlink" title="提交流程"></a>提交流程</h2><pre class="mermaid">graph TD;
+    A[开始] --> B{判断是否有webapp目录}
+    B -->|是| C[备份webapp目录并删除]
+    C --> D
+    B -->|否| D[从svn同步最新代码]
+    D --> E{判断是否有webapp目录}
+    E -->|否| F["创建webapp目录，并托管到svn"]
+    E -->|是| G{判断webapp目录下是否有文件}
+    F --> G
+    G -->|是| H["将webapp目录下的文件，从svn中删除"]
+    G -->|否| I[执行压缩编译]
+    H --> I
+    I --> J[将webapp下的文件提交到svn]
+    J --> K[结束]</pre>
+
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>. auto-commit.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">set -x</span><br><span class="line">###########################################</span><br><span class="line">###自动编译、并提交webapp目录的内容到svn###</span><br><span class="line"># 1. 将该脚本置于前端frontend目录下</span><br><span class="line"># 2. 执行  sh  auto-commit.sh  $&#123;comment&#125;</span><br><span class="line">#</span><br><span class="line"># 适用的项目结构</span><br><span class="line"># |rj(rj_u, etc.)     项目根目录</span><br><span class="line"># |-- webapp     前端生产代码</span><br><span class="line"># |-- frontend   前端开发代码</span><br><span class="line"># |  |-- auto-commit.sh</span><br><span class="line"># 适用的svn客户端Tortoise SVN 1.9+</span><br><span class="line">###########################################</span><br><span class="line"></span><br><span class="line">comment=$1</span><br><span class="line">#检验评论长度，必须大于4个字符</span><br><span class="line">if [ $&#123;#comment&#125; -le 4 ];then</span><br><span class="line">    echo &quot;评论长度必须大于4个字符&quot;</span><br><span class="line">    echo &quot;Usage: sh auto-commit.sh \$&#123;comment&#125;&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">sourcePath=`pwd`</span><br><span class="line">#校验脚本存放路径，必须置于前端frontend目录中</span><br><span class="line">if [ &quot;$&#123;sourcePath##*/&#125;&quot; != &quot;frontend&quot; ];then</span><br><span class="line">    echo &quot;脚本未置于frontend中，自动编译和部署无法生效&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#编译前强制同步svn最新代码</span><br><span class="line">cd ..</span><br><span class="line">if [ -d webapp ];then</span><br><span class="line">    [ -d webapp.bak ] &amp;&amp; rm -rf webapp.bak</span><br><span class="line">    echo &quot;备份当前webapp为webapp.bak&quot;</span><br><span class="line">    mv webapp webapp.bak</span><br><span class="line">fi</span><br><span class="line">svn update</span><br><span class="line">if [ $? -ne 0 ];then</span><br><span class="line">    echo &quot;执行svn update出错，请检查&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#如果webapp未托管到svn，托管之</span><br><span class="line">if [ ! -d  webapp ];then</span><br><span class="line">    echo &quot;不存在webapp目录，创建之&quot;</span><br><span class="line">    mkdir webapp</span><br><span class="line">    echo &quot;添加webapp目录到svn&quot;</span><br><span class="line">    svn add webapp</span><br><span class="line">    svn ci webapp -m &quot;添加webapp目录到svn&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#为了添加新编译代码中出现的新文件，需要先删除svn上的生产版本</span><br><span class="line">cd webapp</span><br><span class="line">buildPath=`pwd`</span><br><span class="line">if [ `ls|wc -l` -gt 0 ];then</span><br><span class="line">    svn delete *</span><br><span class="line">    echo &quot;删除svn上的生产版本&quot;</span><br><span class="line">    svn ci * -m &quot;删除之前的生产版本&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#编译代码</span><br><span class="line">echo &quot;执行代码编译&quot;</span><br><span class="line">cd $sourcePath</span><br><span class="line">npm run build</span><br><span class="line">if [ $? -ne 0 ];then</span><br><span class="line">    echo &quot;代码编译失败！请检查&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#提交代码到svn</span><br><span class="line">cd $buildPath</span><br><span class="line">svn add *</span><br><span class="line">echo &quot;提交新代码&quot;</span><br><span class="line">svn ci * -m &quot;***自动提交***$&#123;comment&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/02/docker/自动提交webapp-md/" data-id="cjrqhxqqi000dpwqxw5l5x18x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>设计模式 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。单例模式策略模式代理模式迭代器模式发布-订阅模式命令模式模板方法模式组合模式享元模式职责链模式中介者模式(上)装饰者模式适配器模式">
+<meta name="keywords" content="design pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/design pattern/设计模式/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。单例模式策略模式代理模式迭代器模式发布-订阅模式命令模式模板方法模式组合模式享元模式职责链模式中介者模式(上)装饰者模式适配器模式">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T15:31:55.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。单例模式策略模式代理模式迭代器模式发布-订阅模式命令模式模板方法模式组合模式享元模式职责链模式中介者模式(上)装饰者模式适配器模式">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-design pattern/设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/design pattern/设计模式/" class="article-date">
+  <time datetime="2019-02-04T15:22:22.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。"><a href="#好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。" class="headerlink" title="好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。"></a>好的设计模式，可以让代码更简洁，容易维护和扩展，减少bug。</h2><p><a href="http://note.youdao.com/noteshare?id=a13a6f6f49c3bd14296e074e44a02320&sub=EC42C6332E3D4C1D989D79EF74768BE9" target="_blank">单例模式</a><br><a href="http://note.youdao.com/noteshare?id=7567c95891455810242541a35bc85f6e&sub=6EC3BAF9D826444BB22D4568666C8E06" target="_blank">策略模式</a><br><a href="http://note.youdao.com/noteshare?id=0c8d9ca1cb8ea5cdb62b82c1131b36f2&sub=58C4F0F3B75D44358708B5FB069907CC" target="_blank">代理模式</a><br><a href="http://note.youdao.com/noteshare?id=83a5d3f963b37509d62419538a5b78af&sub=217BF65AB73744B69F95DA1E5D0CC05F" target="_blank">迭代器模式</a><br><a href="http://note.youdao.com/noteshare?id=7a23245a82a96e21e2391cc6f9048407&sub=A5D2EA080C554D888A3A26DFBF650B62" target="_blank">发布-订阅模式</a><br><a href="http://note.youdao.com/noteshare?id=8ee9e35dd8d36cf261bc7834996a5177&sub=87623E0725B94B2389CA44A40B10B8A0" target="_blank">命令模式</a><br><a href="http://note.youdao.com/noteshare?id=4fb8911e4f147632e169546b266bc8e3&sub=496CCDEFECB74076B70449024645C28B" target="_blank">模板方法模式</a><br><a href="http://note.youdao.com/noteshare?id=34891c1bf4f7ef6ad60785b56e02111b&sub=98ED59B9C3D84D6DBCA653B04FF66A55" target="_blank">组合模式</a><br><a href="http://note.youdao.com/noteshare?id=a041468ee8cb24fe2655a10643fb57d6&sub=FF1FE0F7ED284DDE88F45AA3CB6502D3" target="_blank">享元模式</a><br><a href="http://note.youdao.com/noteshare?id=0ca497f77897837080c3cb52d98df2da&sub=EA8A6D175CED4604B5811B1B580C8FD1" target="_blank">职责链模式</a><br><a href="http://note.youdao.com/noteshare?id=121542c7d68764644344fe4879d7058b&sub=56B44879E8A84185BF33E90364E33F1B" target="_blank">中介者模式(上)</a><br><a href="http://note.youdao.com/noteshare?id=9fc428885720ebe2f5404bd1dbafa9aa&sub=0806651E4ED14B5A97A0EB8204FF74C7" target="_blank">装饰者模式</a><br><a href="http://note.youdao.com/noteshare?id=b875eaaaf169ef0c86f55af1913e0596&sub=5C0F3340DF3C4B2F85282775DE573FAF" target="_blank">适配器模式</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/design pattern/设计模式/" data-id="cjrqhxqpc0000pwqxzhbubmv3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-pattern/">design pattern</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">私有node仓库verdaccio部署(docker)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

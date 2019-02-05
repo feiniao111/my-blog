@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue项目模板 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景目前vue-cli官方提供的webpack模板，和实际组内项目有所区别，每次新建一个项目，都需要对用官方模板创建的项目做一些细节调整，具体包括:  输出目录改为webapp(默认为dist); 隐藏生产环境源码（默认可见); 安装项目依赖（jquery、node-sass等）等等，为了加快项目开发效率，有必要对现有项目进行梳理，提取出一套适用于CM web项目的webpack模板。  定制模板">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目模板">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/vue/vue项目模板/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景目前vue-cli官方提供的webpack模板，和实际组内项目有所区别，每次新建一个项目，都需要对用官方模板创建的项目做一些细节调整，具体包括:  输出目录改为webapp(默认为dist); 隐藏生产环境源码（默认可见); 安装项目依赖（jquery、node-sass等）等等，为了加快项目开发效率，有必要对现有项目进行梳理，提取出一套适用于CM web项目的webpack模板。  定制模板">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T11:25:44.712Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue项目模板">
+<meta name="twitter:description" content="背景目前vue-cli官方提供的webpack模板，和实际组内项目有所区别，每次新建一个项目，都需要对用官方模板创建的项目做一些细节调整，具体包括:  输出目录改为webapp(默认为dist); 隐藏生产环境源码（默认可见); 安装项目依赖（jquery、node-sass等）等等，为了加快项目开发效率，有必要对现有项目进行梳理，提取出一套适用于CM web项目的webpack模板。  定制模板">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue/vue项目模板" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/vue/vue项目模板/" class="article-date">
+  <time datetime="2019-02-04T09:29:26.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue项目模板
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景<br>目前vue-cli官方提供的webpack模板，和实际组内项目有所区别，每次新建一个项目，都需要对用官方模板创建的项目做一些细节调整，具体包括:</p>
+<ol>
+<li>输出目录改为webapp(默认为dist);</li>
+<li>隐藏生产环境源码（默认可见);</li>
+<li>安装项目依赖（jquery、node-sass等）<br>等等，为了加快项目开发效率，有必要对现有项目进行梳理，提取出一套适用于CM web项目的webpack模板。</li>
+</ol>
+<p>定制模板<br>vue-cli提供了定制模板的方法，允许开发团队定制自己的个性模板。这里大致介绍一下我们的定制模板的功能以及目录结构。<br>功能<br>  ● 国际化<br>  ● 服务器代理<br>  ● 提供mock环境<br>  ● 预置jquery, node-sass, vue-router, vuex, mockjs等常用插件<br>  ● 生产环境代码隐藏<br>  ● 编译产出目录为webapp</p>
+<p><a href="http://note.youdao.com/noteshare?id=366f5d0692c89c7a0d5f44683719bded&sub=F04160B34B874315AB9435EA15459460" target="_blank">项目模板</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/vue/vue项目模板/" data-id="cjrqhxqrv000vpwqxv4uplkg9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          私有node仓库verdaccio部署(docker)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/04/docker/vue项目模板demo部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue项目模板demo部署(docker)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

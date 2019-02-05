@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue项目模板demo部署(docker) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="优点将使用模板生成的项目打包成docker镜像，使其可以快速的安装和运行。另外在生成docker容器时添加1--restart=always 选项，即使服务挂掉也会自动重启，省去了运维工作(#\^.^#) Dockerfile基于node官方镜像制作。  Dockerfile 12345678910111213141516171819202122FROM node:8WORKDIR /app#安装">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目模板demo部署(docker)">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/docker/vue项目模板demo部署/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="优点将使用模板生成的项目打包成docker镜像，使其可以快速的安装和运行。另外在生成docker容器时添加1--restart=always 选项，即使服务挂掉也会自动重启，省去了运维工作(#\^.^#) Dockerfile基于node官方镜像制作。  Dockerfile 12345678910111213141516171819202122FROM node:8WORKDIR /app#安装">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T09:22:09.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue项目模板demo部署(docker)">
+<meta name="twitter:description" content="优点将使用模板生成的项目打包成docker镜像，使其可以快速的安装和运行。另外在生成docker容器时添加1--restart=always 选项，即使服务挂掉也会自动重启，省去了运维工作(#\^.^#) Dockerfile基于node官方镜像制作。  Dockerfile 12345678910111213141516171819202122FROM node:8WORKDIR /app#安装">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker/vue项目模板demo部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/docker/vue项目模板demo部署/" class="article-date">
+  <time datetime="2019-02-04T09:19:49.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue项目模板demo部署(docker)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>将使用模板生成的项目打包成docker镜像，使其可以快速的安装和运行。另外在生成docker容器时添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--restart=always</span><br></pre></td></tr></table></figure></p>
+<p>选项，即使服务挂掉也会自动重启，省去了运维工作(#\^.^#)</p>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>基于<a href="https://hub.docker.com/_/node/">node官方镜像</a>制作。</p>
+<ul>
+<li><p>Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">FROM node:8</span><br><span class="line">WORKDIR /app</span><br><span class="line">#安装模板脚本</span><br><span class="line">COPY install.sh /app</span><br><span class="line"># 配置镜像源</span><br><span class="line">RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak &amp;&amp; \</span><br><span class="line">    echo &quot;deb http://mirrors.163.com/debian/ jessie main non-free contrib&quot; &gt;/etc/apt/sources.list &amp;&amp; \</span><br><span class="line">    echo &quot;deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib&quot; &gt;&gt;/etc/apt/sources.list &amp;&amp; \</span><br><span class="line">    echo &quot;deb-src http://mirrors.163.com/debian/ jessie main non-free contrib&quot; &gt;&gt;/etc/apt/sources.list &amp;&amp; \</span><br><span class="line">    echo &quot;deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib&quot; &gt;&gt;/etc/apt/sources.list</span><br><span class="line"># 安装vue-cli</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get -y install expect &amp;&amp; npm install -g vue-cli &amp;&amp; apt-get -y install net-tools</span><br><span class="line"># 安装模板</span><br><span class="line">RUN chmod +x install.sh &amp;&amp; ./install.sh</span><br><span class="line"></span><br><span class="line">WORKDIR /app/frontend</span><br><span class="line">#启动模板脚本</span><br><span class="line">COPY inrun.sh /app/frontend</span><br><span class="line"></span><br><span class="line">EXPOSE 8080 8081</span><br><span class="line">#CMD [ &quot;npm&quot;, &quot;run&quot;, &quot;dev&quot; ]</span><br><span class="line">CMD [ &quot;sh&quot;, &quot;inrun.sh&quot; ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>install.sh<br>下载项目模板并生成项目。Dockerfile使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">#等待从github上下载模板源码</span><br><span class="line">set timeout 200</span><br><span class="line">spawn vue init feiniao111/vueWebTemplate frontend</span><br><span class="line">expect (frontend)</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line">set timeout 10</span><br><span class="line">expect (A*Vue.js*project)</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line">expect fe)</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line">expect &gt;)</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line">expect elsewhere\r</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line">#等待安装node依赖</span><br><span class="line">set timeout 5000</span><br><span class="line">expect myself</span><br><span class="line">send &quot;\r&quot;</span><br><span class="line"></span><br><span class="line">expect https://vuejs-templates.github.io/webpack</span><br><span class="line">send \003</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>inrun.sh<br>运行dev环境和mock环境。启动容器时执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#更改主机ip</span><br><span class="line">ip=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &apos;&#123;print $2&#125;&apos;|tr -d &quot;addr:&quot;`</span><br><span class="line">sed  -i &quot;s/host: &apos;localhost&apos;/host: &apos;$ip&apos;/&quot; config/index.js</span><br><span class="line">npm run dev&amp;</span><br><span class="line">npm run mock</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><p>在Dockerfile所在目录，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t cm_vue_template:1.0 .</span><br></pre></td></tr></table></figure></p>
+<p>制作成功后，执行<code>docker images</code>查看该镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">cm_vue_template            1.0                 0cae166e736c        About an hour ago   977MB</span><br><span class="line"></span><br><span class="line">node                       8                   41a1f5b81103        10 days ago         673MB</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，cm_vue_template:1.0有977MB，这是因为它的基础镜像node:8就有673MB（内置了svn、git、node等），并且cm_vue_template还安装好了运行vue项目所需的node依赖。注意：因为要从github上下载模板，由于网络的原因可能会制作失败，多试几次就好。</p>
+<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><p>镜像生成后，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name template -p 8080-8081:8080-8081 --restart=always cm_vue_template:1.0</span><br></pre></td></tr></table></figure></p>
+<p>注意这里暴露的8080是dev环境的端口，8081是mock环境，<code>--restart-always</code>可以在容器停止后重新启动。<br>容器运行成功后，执行<code>docker ps</code>,可以看到正在运行的template容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                                  NAMES</span><br><span class="line">018a83d10925        cm_vue_template:1.0   &quot;sh inrun.sh&quot;            2 hours ago         Up 2 hours          0.0.0.0:8080-8081-&gt;8080-8081/tcp                                       template</span><br></pre></td></tr></table></figure></p>
+<h2 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h2><p>容器运行成功后,访问所在机器的ip+端口号，如：<br><a href="http://172.21.149.13:8080">http://172.21.149.13:8080</a><br><a href="http://172.21.149.13:8081">http://172.21.149.13:8081</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/docker/vue项目模板demo部署/" data-id="cjrqhxqqa0008pwqx0khe7ynx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/vue/vue项目模板/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue项目模板
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/04/code review/Phabricator后台管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Phabricator后台管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

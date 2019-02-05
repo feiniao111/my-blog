@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>私有node仓库verdaccio部署(docker) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="why verdaccio?verdaccio基于sinopia fork出来的node仓库，具备向后兼容特性，因为sinopia已经不再维护,故选择verdaccio作为私有node仓库。 why docker?原有的方案采用pm2作为node仓库的进程管理器，它是一款优秀的node进程管理器，具有负载均衡等特点。但我们使用pm2的主要原因是为了避免仓库进程突然宕掉。从这点来看，运行docker">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="私有node仓库verdaccio部署(docker)">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/docker/私有node仓库verdaccio部署-docker/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="why verdaccio?verdaccio基于sinopia fork出来的node仓库，具备向后兼容特性，因为sinopia已经不再维护,故选择verdaccio作为私有node仓库。 why docker?原有的方案采用pm2作为node仓库的进程管理器，它是一款优秀的node进程管理器，具有负载均衡等特点。但我们使用pm2的主要原因是为了避免仓库进程突然宕掉。从这点来看，运行docker">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T11:43:09.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="私有node仓库verdaccio部署(docker)">
+<meta name="twitter:description" content="why verdaccio?verdaccio基于sinopia fork出来的node仓库，具备向后兼容特性，因为sinopia已经不再维护,故选择verdaccio作为私有node仓库。 why docker?原有的方案采用pm2作为node仓库的进程管理器，它是一款优秀的node进程管理器，具有负载均衡等特点。但我们使用pm2的主要原因是为了避免仓库进程突然宕掉。从这点来看，运行docker">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker/私有node仓库verdaccio部署-docker" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/" class="article-date">
+  <time datetime="2019-02-04T11:41:05.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      私有node仓库verdaccio部署(docker)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="why-verdaccio"><a href="#why-verdaccio" class="headerlink" title="why verdaccio?"></a>why verdaccio?</h2><p><a href="https://github.com/verdaccio/verdaccio">verdaccio</a>基于sinopia fork出来的node仓库，具备向后兼容特性，因为<a href="https://github.com/rlidwka/sinopia">sinopia</a>已经不再维护,故选择verdaccio作为私有node仓库。</p>
+<h2 id="why-docker"><a href="#why-docker" class="headerlink" title="why docker?"></a>why docker?</h2><p>原有的方案采用<a href="https://github.com/verdaccio/verdaccio">pm2</a>作为node仓库的进程管理器，它是一款优秀的node进程管理器，具有负载均衡等特点。但我们使用pm2的主要原因是为了避免仓库进程突然宕掉。从这点来看，运行docker容器就可以了，只要加上–restart=always，就能实现服务挂掉自重启。</p>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p>采用官方镜像verdaccio/verdaccio。镜像下载命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull verdaccio/verdaccio</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h2><p>在磁盘上建立目录/home/docker/appData/verdaccio，作为仓库的storage，注意由于verdaccio以非root用户运行，需要给该目录赋予写和读权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 777 /home/docker/appData/verdaccio</span><br></pre></td></tr></table></figure></p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>执行以下脚本，启动一个名叫verdaccio，宕机自重启的docker容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">set -x</span><br><span class="line">V_PATH=/home/docker/appData/verdaccio</span><br><span class="line">docker run -it --name verdaccio -p 4873:4873 \</span><br><span class="line">        -v $V_PATH/storage:/verdaccio/storage \</span><br><span class="line">        --restart=always \</span><br><span class="line">        verdaccio/verdaccio</span><br></pre></td></tr></table></figure></p>
+<p>生成容器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                                                NAMES</span><br><span class="line">d08ca15fb244        verdaccio/verdaccio   &quot;/usr/local/bin/dumb…&quot;   2 hours ago         Up 2 hours          0.0.0.0:4873-&gt;4873/tcp                                                               verdaccio</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>和sinopia完全一样</p>
+<h2 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h2><p>集成到容器日志中，查看命令为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect verdaccio</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/04/docker/私有node仓库verdaccio部署-docker/" data-id="cjrqhxqqd0009pwqxgu3s1ml4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/design pattern/设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/04/vue/vue项目模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue项目模板</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-review/">code-review</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code-review/" style="font-size: 20px;">code-review</a> <a href="/tags/design-pattern/" style="font-size: 10px;">design pattern</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/04/design pattern/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/私有node仓库verdaccio部署-docker/">私有node仓库verdaccio部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/vue/vue项目模板/">vue项目模板</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/docker/vue项目模板demo部署/">vue项目模板demo部署(docker)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/code review/Phabricator后台管理/">Phabricator后台管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
